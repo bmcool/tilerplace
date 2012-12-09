@@ -1,0 +1,33 @@
+{% extends "scaffolding.html" %}
+{% load i18n jsonify %}
+
+{% block extra_css %}
+{% endblock %}            
+
+{% block extra_js %}
+<script src="{{ STATIC_URL }}slideout/js/game.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+    var level = {{ current_level.lvl|jsonify }};
+</script>
+{% endblock %}
+
+{% block left_panel %}
+{% for level in levels %}
+<div class="row-fluid">
+    <div class="span12">
+    {{ forloop.counter }}<a href="/game/slideout/{{ current_member.user.id }}/{{ level.id }}/" class="{% if current_level == level %}active{% endif %}">{{ level.title }}</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
+            
+{% block main %}
+<div class="alert alert-info">{{ current_level.title }}</div>
+<div id="cr-stage"></div>
+<div id="instructions">
+    <span class="label">Arrow keys</span> or <span class="label">WASD</span> for movement. <span class="label">R</span> to restart the level. <span class="label">Z</span> to mute the music.
+</div>
+{% endblock %}
+
+{% block right_panel %}
+{% endblock %}

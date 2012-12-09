@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load main_tags mezzanine_tags i18n %}
+<html>
+<head>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+<meta name="description" content="{% block meta_description %}{% endblock %}">
+<title>{{ settings.SITE_TITLE }}</title>
+
+{% compress css %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.responsive.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/mezzanine.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/main.css">
+{% block extra_css %}{% endblock %}
+{% endcompress %}
+
+{% compress js %}
+<title>Tiler Place</title>
+<script src="{{ STATIC_URL }}mezzanine/js/{{ settings.JQUERY_FILENAME }}" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}js/crafty-min.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}js/main.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+</script>
+{% block extra_js %}{% endblock %}
+{% endcompress %}
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body id="{% block body_id %}body{% endblock %}">
+{% include "includes/header.html" %}
+<div class="container">
+    <div class="row">
+        <div class="span3 left">
+            <div class="panel">
+            {% block left_panel %}
+            {% get_all_members_for as members %}
+            {% for member in members %}
+                <a href="/game/slideout/{{ member.user.id }}/" class="{% if member == current_member %}active{% endif %}">{{ member.user.username }}</a>
+            {% endfor %}
+            {% endblock %}
+            </div>
+        </div>
+        <div class="span6 middle">
+            {% block main %}{% endblock %}
+        </div>
+        <div class="span3 right">
+            <div class="panel">
+                {% block right_panel %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">{% include "includes/footer.html" %}</div>
+</body>
+</html>
