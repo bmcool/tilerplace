@@ -8,6 +8,14 @@
 <script src="{{ STATIC_URL }}slideout/js/game.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
     var level = {{ current_level.lvl|jsonify }};
+    
+    function onVictory() {
+        {% if next_level_id %}
+        document.location.href = '/game/slideout/{{ current_member.user.id }}/{{ next_level_id }}/';
+        {% else %}
+        Crafty.scene("victory");
+        {% endif %}
+    }
 </script>
 {% endblock %}
 
@@ -15,9 +23,11 @@
 {% for level in levels %}
 <div class="row-fluid">
     <div class="span12">
-    {{ forloop.counter }}<a href="/game/slideout/{{ current_member.user.id }}/{{ level.id }}/" class="{% if current_level == level %}active{% endif %}">{{ level.title }}</a>
+    Level {{ forloop.counter }}<br/>
+    <a href="/game/slideout/{{ current_member.user.id }}/{{ level.id }}/" class="{% if current_level == level %}active{% endif %}">{{ level.title }}</a>
     </div>
 </div>
+<br/>
 {% endfor %}
 {% endblock %}
             

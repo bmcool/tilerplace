@@ -14,7 +14,7 @@
 <div class="row">
 {% for level in levels %}
 <div class="span2">
-{{ forloop.counter }}
+Level {{ forloop.counter }}<br/>
 <a href="/game/slideout/{{ current_member.user.id }}/{{ level.id }}/">{{ level.title }}</a>
 </div>
 {% empty %}

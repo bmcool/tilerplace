@@ -32,4 +32,12 @@ def game_level(request, user_id, level_id):
     except Exception as e:
         return redirect('/game/' + current_member.user.user_id + '/')
     
+    levels_list = list(levels)
+    current_index = levels_list.index(current_level)
+    next_index = current_index + 1
+    if next_index < len(levels_list):
+        next_level_id = levels_list[next_index].id
+    else:
+        next_level_id = None
+    
     return render_to_response('game.html', locals(), context_instance=RequestContext(request))

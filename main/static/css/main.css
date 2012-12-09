@@ -36,3 +36,7 @@ a.active {
 label {
     color: white;
 }
+
+#left-panel {
+    height: 580px;
+}

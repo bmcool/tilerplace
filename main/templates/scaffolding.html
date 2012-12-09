@@ -10,6 +10,7 @@
 <title>{{ settings.SITE_TITLE }}</title>
 
 {% compress css %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.mCustomScrollbar.css">
 <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css">
 <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.responsive.css">
 <link rel="stylesheet" href="{{ STATIC_URL }}css/mezzanine.css">
@@ -20,10 +21,18 @@
 {% compress js %}
 <title>Tiler Place</title>
 <script src="{{ STATIC_URL }}mezzanine/js/{{ settings.JQUERY_FILENAME }}" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}js/jquery-ui.min.js"></script>
+<script src="{{ STATIC_URL }}js/jquery.mCustomScrollbar.js"></script>
+<script src="{{ STATIC_URL }}js/jquery.mousewheel.min.js"></script>
 <script src="{{ STATIC_URL }}js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="{{ STATIC_URL }}js/crafty-min.js" type="text/javascript" charset="utf-8"></script>
 <script src="{{ STATIC_URL }}js/main.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
+
+$(document).ready(function() {
+    $("#left-panel").mCustomScrollbar({scrollInertia: 0});
+});
+
 </script>
 {% block extra_js %}{% endblock %}
 {% endcompress %}
@@ -36,11 +45,11 @@
 <div class="container">
     <div class="row">
         <div class="span3 left">
-            <div class="panel">
+            <div id="left-panel" class="panel">
             {% block left_panel %}
             {% get_all_members_for as members %}
             {% for member in members %}
-                <a href="/game/slideout/{{ member.user.id }}/" class="{% if member == current_member %}active{% endif %}">{{ member.user.username }}</a>
+                <li><a href="/game/slideout/{{ member.user.id }}/" class="{% if member == current_member %}active{% endif %}">{{ member.user.username }}</a></li>
             {% endfor %}
             {% endblock %}
             </div>

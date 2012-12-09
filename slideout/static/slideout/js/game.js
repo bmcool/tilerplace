@@ -60,7 +60,7 @@
             exit = Crafty("Exit");
             if (exit.x == this.x && exit.y == this.y) {
                 this.StopSlide();
-                Crafty.scene("victory");
+                Crafty.scene("done");
             }
         },
         
@@ -161,6 +161,10 @@
         player.StopSlide();
     });
     
+    Crafty.scene("done", function() {
+        onVictory();
+    });
+    
     Crafty.scene("victory", function() {
         victory_text = Crafty.e("2D, DOM, Text");
         victory_text.attr({
@@ -169,7 +173,7 @@
             x: 0,
             y: (TILE_SIZE * MAP_SIZE) / 2 - 10
         });
-        victory_text.text("To be continued...");
+        victory_text.text("Congratulations!! You finished all levels!!");
         victory_text.css({
             "text-align": "center",
             "color": "#FFF"
