@@ -1,0 +1,5 @@
+<VirtualHost *:80>
+    WSGIScriptAlias / /var/www/django/tilerplace/deploy/wsgi.py
+    Alias /static /var/www/django/tilerplace/static
+    Alias /media /var/www/django/tilerplace/media
+</VirtualHost>
