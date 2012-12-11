@@ -1,4 +1,5 @@
 body, html {
+    color: white;
     background-color:#444;
 }
 
@@ -33,10 +34,10 @@ a.active {
     color: white;
 }
 
-label {
-    color: white;
-}
-
 #left-panel {
     height: 580px;
+}
+
+.level-grid {
+    height: 170px;
 }
