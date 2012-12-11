@@ -14,8 +14,10 @@
 <div class="row">
 {% for level in levels %}
 <div class="span2 level-grid">
+<a href="/game/slideout/{{ current_member.user.id }}/{{ level.id }}/">
 Level {{ forloop.counter }}<br/>
-<a href="/game/slideout/{{ current_member.user.id }}/{{ level.id }}/">{{ level.title }}</a>
+{{ level.title }}
+</a>
 </div>
 {% empty %}
 <div class="span6">

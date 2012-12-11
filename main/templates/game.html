@@ -23,8 +23,10 @@
 {% for level in levels %}
 <div class="row-fluid">
     <div class="span12">
+    <a href="/game/slideout/{{ current_member.user.id }}/{{ level.id }}/" class="{% if current_level == level %}active{% endif %}">
     Level {{ forloop.counter }}<br/>
-    <a href="/game/slideout/{{ current_member.user.id }}/{{ level.id }}/" class="{% if current_level == level %}active{% endif %}">{{ level.title }}</a>
+    {{ level.title }}
+    </a>
     </div>
 </div>
 <br/>
