@@ -176,7 +176,7 @@ STATICFILES_FINDERS = (
 from django.core.urlresolvers import reverse_lazy
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 
-# EMAIL_SUBJECT_PREFIX = '[WEARETOGETHER SERVER] '
+# EMAIL_SUBJECT_PREFIX = '[TILERPLACE SERVER] '
 # EMAIL_USE_TLS = True
 # EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_PORT = 587

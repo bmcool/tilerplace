@@ -3,6 +3,10 @@ body, html {
     background-color:#444;
 }
 
+label {
+    color: white;
+}
+
 #cr-stage {
     margin:0 auto;
     margin-bottom: 30px;
